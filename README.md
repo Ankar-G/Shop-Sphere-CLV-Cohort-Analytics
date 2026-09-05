@@ -1,15 +1,283 @@
-🛍️ Shop Sphere — Customer Lifetime Value & Cohort AnalyticsAn end-to-end data analytics project using SQL and Power BI to analyze customer lifetime value, retention dynamics, purchasing behavior, and acquisition channel efficiency for an e-commerce platform.📌 Table of Contents📖 Project Overview❓ Problem Statement🎯 Business Objectives🔄 Project Workflow🔍 SQL Analysis👥 Customer Analysis📊 RFM Segmentation📅 Cohort & Retention Analysis💰 CLV & Customer Value Analysis📣 Acquisition Analysis📊 Business KPIs📈 Power BI Dashboard💡 Key Insights🛠️ Tech Stack📁 Project Structure▶️ How to Run🖼️ Dashboard Preview🤝 Connect With Me📖 Project OverviewShop Sphere is an e-commerce platform seeking to optimize customer lifetime value (CLV) and improve marketing budget allocation. While the company maintains a large customer base of 50,000 customers, management lacked clarity on customer retention patterns, RFM segment contributions, and channel-level acquisition quality.This project delivers an end-to-end analytical framework combining structured MySQL querying with interactive Power BI dashboards. By examining transactional logs, customer demographics, and marketing acquisition channels, this analysis quantifies historical customer value (based on delivered order status), tracks cohort-level decay across 35 months, and highlights actionable channels for sustainable revenue growth.❓ Problem StatementThe leadership team faced key operational and marketing uncertainties:Customer Value Disparity: Who are the high-value customers, and what proportion of total revenue do they generate?Retention & Churn: How effectively does the platform retain customers over time, and at what month does cohort activity typically decay?Purchasing Patterns: What is the relationship between purchase frequency bands and overall customer value?Acquisition Efficiency: Which acquisition channels deliver high-volume leads versus high-value customers with higher Average CLV?Campaign ROI: Which acquisition campaigns generate the highest absolute revenue contribution?🎯 Business ObjectivesObjectiveDescriptionCustomer Value AnalysisEvaluate historical CLV distributions across customer segments based on delivered orders.RFM SegmentationCategorize customers into actionable groups (Champions, Loyal Customers, Potential Loyalists, Lost Customers, At Risk) using Recency, Frequency, and Monetary scores.Retention AnalysisCalculate baseline customer retention and repeat purchase rates to measure overall platform loyalty.Cohort AnalysisTrack retention percentage matrix by signup month across 35+ months to identify drop-off periods.Purchase BehaviorMap purchase frequency bands against overall revenue to isolate core value drivers.Acquisition AnalysisEvaluate the total CLV and Average CLV across 8 marketing acquisition channels and underlying campaigns.Business IntelligenceBuild a 3-page interactive Power BI dashboard for executive reporting and drill-down analysis.🔄 Project WorkflowRaw E-Commerce Data (5 Tables)
+# 🛍️ Shop Sphere — Customer Lifetime Value & Cohort Analytics
+
+> An end-to-end SQL + Power BI project analyzing customer value, retention, and acquisition performance for an e-commerce business.
+
+---
+
+## 📌 Table of Contents
+
+* [Project Overview](#project-overview)
+* [Problem Statement](#problem-statement)
+* [Business Objectives](#business-objectives)
+* [Project Workflow](#project-workflow)
+* [SQL Analysis](#sql-analysis)
+* [Customer Analysis](#customer-analysis)
+* [RFM Segmentation](#rfm-segmentation)
+* [Cohort & Retention Analysis](#cohort--retention-analysis)
+* [CLV & Customer Value Analysis](#clv--customer-value-analysis)
+* [Acquisition Analysis](#acquisition-analysis)
+* [Business KPIs](#business-kpis)
+* [Power BI Dashboard](#power-bi-dashboard)
+* [Key Insights](#key-insights)
+* [Tech Stack](#tech-stack)
+* [Project Structure](#project-structure)
+* [How to Run](#how-to-run)
+* [Dashboard Preview](#dashboard-preview)
+* [Connect With Me](#connect-with-me)
+
+---
+
+## 📖 Project Overview
+
+Shop Sphere is an end-to-end data analytics project built to help an e-commerce business understand the value of its customer base. Using SQL for data preparation and business analysis, and Power BI for interactive reporting, the project brings together customer transactions, product data, and returns into a single analytical view of **customer lifetime value, retention behaviour, and acquisition performance**.
+
+Rather than treating every customer the same, this project segments the customer base by value and behaviour, tracks how customers from different signup cohorts are retained over time, and evaluates which acquisition channels and campaigns are actually bringing in valuable, repeat customers. The result is a dashboard suite that a marketing or growth team could realistically use to prioritize retention efforts and reallocate acquisition budget.
+
+---
+
+## ❓ Problem Statement
+
+The company has a large customer base but lacks a clear understanding of:
+
+* Which customers are most valuable to the business
+* How customer retention changes over time and across signup cohorts
+* What purchasing behaviours (frequency, repeat orders) are linked to higher customer value
+* Which acquisition channels and campaigns bring in high-value, long-term customers
+
+---
+
+## 🎯 Business Objectives
+
+| Objective                | Description |
+| ------------------------ | ----------- |
+| Customer Value Analysis  | Quantify historical customer value and identify which customers drive the most revenue. |
+| RFM Segmentation         | Segment customers by Recency, Frequency, and Monetary value to identify Champions, Loyal Customers, Potential Loyalists, At Risk, and Lost Customers. |
+| Retention Analysis       | Measure overall customer retention rate and repeat purchase behaviour. |
+| Cohort Analysis          | Track how customers from each signup cohort continue purchasing over subsequent months. |
+| Purchase Behaviour       | Understand how order frequency relates to customer value. |
+| Acquisition Analysis     | Evaluate which acquisition channels and campaigns generate the highest-value customers. |
+| Business Intelligence    | Deliver an interactive, decision-ready Power BI dashboard for stakeholders. |
+
+---
+
+## 🔄 Project Workflow
+
+```text
+Raw Data
    ↓
-Data Validation & Cleaning (SQL - Filters for 'Delivered' Orders)
+Data Validation & Cleaning
    ↓
-SQL Analytical Queries (RFM Scoring, Cohort Indexing, CLV Calculation)
+SQL Analysis
    ↓
-Data Modeling & DAX Measures (Power BI)
+Customer & RFM Analysis
    ↓
-Interactive Dashboard Design (Executive, Retention, Acquisition Pages)
+Cohort & Retention Analysis
    ↓
-Business Insights & Strategic Recommendations
-🔍 SQL AnalysisThe SQL analytical suite is structured across 7 dedicated execution files using MySQL:Data Validation: Validating schema integrity, removing null order keys, and filtering valid transactions (order_status = 'Delivered').Customer Analysis: Summarizing total customer counts, orders per customer, order values, and geographic/demographic distributions.RFM Segmentation: Calculating Recency (days since last delivered order), Frequency (total delivered orders), and Monetary value (sum of order value) to group customers into 5 distinct RFM segments.Cohort Retention: Computing signup cohorts and calculating month-by-month retention matrices up to Month 35.CLV Analysis: Aggregating total historical order values to compute cumulative Historical CLV and Average CLV per customer segment.Profitability Analysis: Evaluating gross margin by comparing product unit selling price against cost price minus return refund deductions.Acquisition Analysis: Joining acquisition channel and campaign attributes to calculate total CLV, Average CLV, and high-value customer percentages per channel.👥 Customer AnalysisCustomer-level SQL queries aggregated transactional attributes across 50,000 unique profiles:Order Frequency Distribution: Identified that customers average 4.10 orders over their lifecycle.Segment Volume: Categorized customers based on historical spending tiers:High Value Segment: Generates $1.96bn in revenue.Medium Value Segment: Generates $0.24bn in revenue.Low Value Segment: Generates $0.13bn in revenue.Core Drivers: Delivered order status was enforced as the single source of truth for customer historical value calculations to prevent skewing metrics with canceled or returned merchandise.📊 RFM SegmentationUsing Recency, Frequency, and Monetary values, customers were segmented into 5 distinct groups:RFM SegmentCustomer Count% of BaseTotal Revenue ContributionDescriptionPotential Loyalists15.0K30.0%$0.12bnRecent buyers with average frequency; high potential for upsell.Lost Customers12.0K24.0%$0.02bnInactive customers with low recency and frequency scores.Loyal Customers11.5K23.0%$0.42bnRegular buyers with high frequency and steady monetary spend.Champions10.7K21.4%$2.26bnHighest frequency and spenders; primary drivers of platform revenue.At Risk0.9K1.6%$0.01bnHigh past spenders who haven't purchased recently.📅 Cohort & Retention AnalysisCohort tracking was performed by grouping users by their signup year/month and monitoring return transactions over 35 subsequent periods:Initial Engagement: Cohort retention starts at 10%–13% in Month 0, peaking at Month 1 across cohorts (21% in 2025, 20% in 2024, 17% in 2023).Mid-Term Stability: Retention remains relatively steady between Month 2 and Month 12, averaging around 18%–24% for 2023 cohorts.Long-Term Decay: Cohorts experience significant decay after Month 24, dropping down to 2% by Month 35 (2023 cohort).Platform Metrics: Overall platform Customer Retention Rate stands at 95.68%, with a Repeat Customer Rate of 58.78%.💰 CLV & Customer Value AnalysisNote: All CLV metrics in this project represent Historical CLV / Customer Value calculated from completed/delivered orders.Total Portfolio Value: $2.00bn across 50,000 customers.Average Customer Value: $46.59K per customer.Top Customer Spend: The top individual customers (e.g., CUST013142, CUST028766, CUST023782) hold historical values between $1.28M and $1.51M.Value Concentration: High-Value customers represent 11K (22%) of the customer base but drive the dominant share of absolute revenue ($1.96bn out of $2.33bn combined segment revenue).📣 Acquisition AnalysisThe analysis evaluated 8 distinct acquisition channels:Highest Total CLV Volume: Organic Search generated $0.60bn, followed by Direct ($0.41bn) and Referral ($0.33bn).Highest Average CLV: Referral leads significantly with an Average CLV of $95K, followed by Direct ($69K) and Organic Search ($63K).Channel Inefficiency: Social Media Ads acquired the highest volume of customers (10K or 20.41% of total user base), yet delivered the lowest Average CLV ($20K).Top Acquisition Campaigns: Organic-Brand ($0.25bn), Organic-YouTube-Reviews ($0.24bn), and Organic-Blog-SEO ($0.23bn) generated the highest cumulative revenue.📊 Business KPIsKPIValueTotal Customers50.00KTotal Orders249.72KTotal Customer Lifetime Value (CLV)$2.00bnAverage Customer Lifetime Value (CLV)$46.59KAverage Orders per Customer4.10Customer Retention Rate95.68%Repeat Customer Rate58.78%High Value Customer Count11KAcquisition Channels Evaluated8📈 Power BI DashboardThe Power BI report consists of 3 dedicated analysis pages designed for executive decision-making:Page 1 — Executive CLV OverviewPurpose: Provides executive oversight on platform-wide value distribution, customer health, and individual spending performance.Key Components:Top KPI card container showing Total Customers (50.00K), Total Orders (249.72K), Total CLV ($2bn), Average CLV ($46.59K), and Average Orders per Customer (4.10).Bar charts comparing Revenue by Customer Value Segment ($1.96bn High Value vs. $0.13bn Low Value) and Revenue Contribution by RFM Segment ($2.26bn from Champions).Customer Distribution by RFM Segment showing Potential Loyalists (15.0K) as the largest customer count group.Top 10 Customers CLV bar chart displaying leading spenders up to $1.51M.Page 2 — Retention & Customer BehaviourPurpose: Analyzes engagement longevity, repeat purchasing behaviors, and long-term cohort decay.Key Components:High-level KPI indicators: Customer Retention Rate (95.68%), Repeat Customer Rate (58.78%), and Average Orders/Customer (104 within repeat sample view).Cohort Retention Analysis Heatmap matrix tracking engagement across months 0 to 35.Customer Distribution by RFM Segment Donut Chart detailing order volume proportions (1 Order: 22.7%, 2 Orders: 18.52%, 10+ Orders: 9.76%).Side-by-side Customers By Purchase Frequency distribution bar chart.Page 3 — Acquisition & Customer ValuePurpose: Evaluates marketing efficiency to guide customer acquisition strategies and budget allocation.Key Components:Acquisition KPIs: High Value Customer Count (11K) and Number of Channels (8).CLV by Acquisition Channel ($0.60bn Organic Search) vs. Average CLV by Acquisition Channel ($95K Referral).Customer Distribution by Acquisition Channel donut breakdown highlighting Social Media Ads (20.41%) and Organic Search (19%).Revenue by Acquisition Campaign ranking top performers like Organic-Brand ($0.25bn) and Referral-FriendInvite ($0.20bn).CLV by Purchase Frequency showing customers with 10+ orders driving $1.39bn in cumulative value.💡 Key InsightsExtreme Revenue Concentration in Champions: The Champions RFM segment accounts for $2.26bn out of overall revenue, heavily outperforming all other groups. Meanwhile, Potential Loyalists form the largest customer volume (15.0K customers) but generate only $0.12bn, signaling a massive upsell conversion opportunity.Referral Channel Yields Highest Quality Customers: While Organic Search generates the highest cumulative CLV ($0.60bn), the Referral channel delivers the highest Average CLV at $95K—nearly double that of Direct ($69K) and Organic Search ($63K).Social Media Ads Suffer From Low Customer Value: Social Media Ads account for the single largest share of acquired customers (10K or 20.41%), yet yield the lowest Average CLV ($20K) among all 8 acquisition channels.Strong Repeat Baseline with Drop-Off Beyond Month 24: Shop Sphere maintains a healthy 58.78% Repeat Customer Rate and 95.68% overall retention rate. However, cohort retention drops significantly in later months, declining to 0.02 (2%) by Month 35, highlighting a need for late-lifecycle re-engagement campaigns.High Purchase Frequency Drives Value Exponentially: Customers in the 10+ Orders frequency band generate $1.39bn in CLV, compared to just $0.06bn from 1-order customers and $0.09bn from 2-order customers. Encouraging third and fourth repeat purchases significantly elevates historical customer value.🛠️ Tech StackToolPurposeMySQLDatabase management, data cleaning, validation, and advanced analytical queries.SQLWriting CTEs, window functions, RFM logic, and cohort matrix transformations.Power BIData modeling, DAX measure creation, dashboard visual layout, and interactivity.DAXCalculating dynamic KPIs, retention percentages, and customer segment aggregations.📁 Project Structureshop-sphere-clv-analytics/
+CLV / Customer Value Analysis
+   ↓
+Acquisition Analysis
+   ↓
+Power BI Dashboard
+   ↓
+Business Insights
+```
+
+---
+
+## 🔍 SQL Analysis
+
+All core analysis for this project was performed in SQL before being loaded into Power BI for visualization. The SQL work was organized into seven structured areas:
+
+1. **Data Validation** — checking for missing values, duplicate records, and inconsistent order/return statuses across the Customers, Orders, Order_Items, Products, and Returns tables.
+2. **Customer Analysis** — customer-level aggregation of orders, revenue, and purchase patterns.
+3. **RFM Segmentation** — scoring customers on Recency, Frequency, and Monetary value and grouping them into segments.
+4. **Cohort Retention** — grouping customers by signup month and tracking their purchasing activity in the months that followed.
+5. **CLV Analysis** — calculating historical customer value based on delivered order value.
+6. **Profitability Analysis** — reviewing revenue and cost data at the product/order level to support value-based analysis.
+7. **Acquisition Analysis** — evaluating customer value and revenue by acquisition channel and campaign.
+
+Only `order_status = 'Delivered'` orders were treated as valid, completed purchases for the customer value and behavioural analysis.
+
+---
+
+## 👥 Customer Analysis
+
+Customer-level analysis brought together order history, revenue contribution, and acquisition source to build a complete picture of each customer. Key dimensions analyzed include:
+
+* Customer value (historical CLV)
+* Order frequency and purchase count per customer
+* Revenue contribution per customer
+* Acquisition channel and campaign at signup
+
+This customer-level view forms the foundation for both the RFM segmentation and the CLV analysis.
+
+---
+
+## 📊 RFM Segmentation
+
+Customers were scored and grouped using an **RFM (Recency, Frequency, Monetary)** framework, then classified into value-based segments: **High Value, Medium Value, and Low Value**, as well as behavioural RFM segments such as Champions, Loyal Customers, Potential Loyalists, At Risk, and Lost Customers.
+
+Based on the dashboard, the customer base (50K customers total) breaks down across RFM segments as follows:
+
+| RFM Segment          | Customers |
+| --------------------- | --------- |
+| Potential Loyalists    | 15.0K     |
+| Lost Customers         | 12.0K     |
+| Loyal Customers        | 11.5K     |
+| Champions              | 10.7K     |
+| At Risk                | 0.9K      |
+
+While Champions make up only about 21% of the customer base, they contribute disproportionately to revenue (see [Key Insights](#key-insights)).
+
+---
+
+## 📅 Cohort & Retention Analysis
+
+Customers were grouped into cohorts by **signup year**, and their purchasing activity was tracked across the months following signup (month 0 through month 35). The Cohort Retention Analysis matrix shows the share of each cohort still active in each subsequent month.
+
+Overall retention metrics from the dashboard:
+
+* **Customer Retention Rate:** 95.68%
+* **Repeat Customer Rate:** 58.78%
+
+Cohort-level patterns:
+
+* The **2023 cohort** shows the most complete lifecycle in the data, with retention rising from 0.10 at month 0 to a peak around 0.23–0.24 near months 23–24, before decaying to 0.02 by month 35.
+* The **2024 cohort** peaks earlier (around 0.21–0.24 in months 1–13) and declines to 0.02 by month 23, the latest month tracked for this cohort.
+* The **2025 cohort** (the newest, with the shortest tracking window) starts at 0.13 in month 0 and has already declined to 0.02 by month 12, showing a faster early drop-off than the older cohorts at the same point in their lifecycle.
+
+This pattern indicates that while the business retains a strong core of repeat customers overall, individual cohort engagement decays steadily over time and newer cohorts appear to be churning slightly faster in their early months.
+
+---
+
+## 💰 CLV & Customer Value Analysis
+
+The CLV metric in this project represents **historical customer value**, calculated from each customer's total delivered order value — it is **not** a predictive or modeled CLV.
+
+Key figures from the Executive CLV Overview:
+
+* **Total Customers:** 50.00K
+* **Total Orders:** 249.72K
+* **Total (Historical) CLV:** 2bn
+* **Average CLV:** 46.59K
+* **Average Orders per Customer:** 4.10
+
+Revenue by customer value segment:
+
+| Value Segment  | Revenue |
+| -------------- | ------- |
+| High Value     | 1.96bn  |
+| Medium Value   | 0.24bn  |
+| Low Value      | 0.13bn  |
+
+**High Value customers generate the overwhelming majority of total revenue**, confirming that a relatively small group of customers drives most of the business's historical value. The top 10 customers by CLV each individually contribute between roughly 1.28M and 1.51M.
+
+---
+
+## 📣 Acquisition Analysis
+
+The Acquisition & Customer Value dashboard evaluates which channels and campaigns bring in the most valuable customers, across **8 acquisition channels**.
+
+CLV by acquisition channel (total):
+
+| Channel          | Total CLV |
+| ---------------- | --------- |
+| Organic Search    | 0.60bn    |
+| Direct            | 0.41bn    |
+| Referral          | 0.33bn    |
+| Paid Search       | 0.28bn    |
+| Email Marketing   | 0.24bn    |
+| Social Media Ads  | 0.20bn    |
+| Affiliate         | 0.16bn    |
+| Marketplace Ads   | 0.11bn    |
+
+Average CLV by acquisition channel tells a different story than total CLV:
+
+| Channel          | Avg CLV |
+| ---------------- | ------- |
+| Referral          | 95K     |
+| Direct            | 69K     |
+| Organic Search    | 63K     |
+| Email Marketing   | 59K     |
+| Paid Search       | 39K     |
+| Affiliate         | 32K     |
+| Marketplace Ads   | 24K     |
+| Social Media Ads  | 20K     |
+
+Revenue by acquisition campaign shows the top campaigns are **Organic-Brand** (0.25bn), **Organic-YouTube-Reviews** (0.24bn), and **Organic-Blog-SEO** (0.23bn), followed closely by **Referral-FriendInvite** and **Referral-CashbackProgram** (0.20bn each).
+
+CLV by purchase frequency shows a clear relationship between order count and value: customers with **10+ orders** account for **1.39bn** in CLV — far ahead of the **0.47bn** generated by customers with 6–10 orders.
+
+---
+
+## 📊 Business KPIs
+
+| KPI                        | Value    |
+| -------------------------- | -------- |
+| Total Customers             | 50.00K   |
+| Total Orders                 | 249.72K  |
+| Total Historical CLV         | 2bn      |
+| Average CLV                  | 46.59K   |
+| Average Orders per Customer  | 4.10     |
+| Customer Retention Rate      | 95.68%   |
+| Repeat Customer Rate         | 58.78%   |
+| Number of Acquisition Channels | 8      |
+
+---
+
+## 📈 Power BI Dashboard
+
+The project includes **3 interactive Power BI dashboard pages**:
+
+### Page 1 — Executive CLV Overview
+
+Gives leadership a high-level view of total customers, total orders, total and average CLV, and average orders per customer. It breaks down revenue by customer value segment (High/Medium/Low), shows the customer distribution and revenue contribution across RFM segments, and ranks the top 10 customers by CLV — making it immediately clear which customer segments and individuals matter most to the business.
+
+### Page 2 — Retention & Customer Behaviour
+
+Focuses on how well the business retains and re-engages customers. It surfaces the overall customer retention rate and repeat customer rate, a month-by-month cohort retention matrix by signup year, the distribution of customers across RFM segments, and how customers are distributed by number of orders placed — helping management see where retention efforts are working and where they are falling off.
+
+### Page 3 — Acquisition & Customer Value
+
+Connects acquisition spend to customer value outcomes. It shows total customers and average CLV alongside the number of acquisition channels in use, then breaks down total and average CLV by channel, customer distribution by channel, revenue by acquisition campaign, and CLV by purchase frequency — giving marketing teams a basis for reallocating budget toward channels and campaigns that bring in genuinely valuable customers rather than just high volume.
+
+---
+
+## 💡 Key Insights
+
+1. **A small segment drives almost all revenue.** High Value customers generate 1.96bn of the 2bn total historical CLV, while Medium and Low Value customers together contribute only about 0.37bn — confirming that customer value is heavily concentrated at the top of the base.
+
+2. **Champions are the real revenue engine, not just the largest segment.** Champions make up only 10.7K of 50K customers (about 21%), yet they contribute 2.26bn in revenue contribution by RFM segment — far more than Loyal Customers (0.42bn) or Potential Loyalists (0.12bn), showing that retaining this relatively small group should be a top priority.
+
+3. **Retention is strong overall, but decays cohort by cohort.** With a 95.68% customer retention rate and 58.78% repeat customer rate, the business has a solid loyal base — but the cohort retention matrix shows every cohort (2023, 2024, 2025) declining from its peak down to roughly 0.02 by the end of its tracked lifecycle, meaning long-term re-engagement is where the business is losing the most ground.
+
+4. **Newer cohorts show faster early drop-off.** The 2025 cohort falls from 0.13 at month 0 to 0.02 by month 12, a faster decline than the 2023 and 2024 cohorts experienced over a comparable early window — a signal worth investigating in onboarding or early lifecycle marketing.
+
+5. **Purchase frequency is strongly tied to customer value.** Customers with 10+ orders account for 1.39bn in CLV — nearly three times the 0.47bn generated by the 6–10 order group — reinforcing that driving repeat purchases is one of the clearest levers for increasing customer value.
+
+6. **Referral is the highest-quality acquisition channel, not the largest.** Referral produces the highest average CLV per customer at 95K, well above Direct (69K) and Organic Search (63K), even though Organic Search leads in total CLV (0.60bn) simply by volume — meaning Referral customers are individually far more valuable.
+
+7. **Social Media Ads bring in volume, not value.** Social Media Ads account for one of the largest shares of acquired customers but produce the lowest average CLV of any channel at just 20K, well below every other acquisition source — indicating a real opportunity to reallocate acquisition spend toward higher-yielding channels like Referral and Organic Search.
+
+8. **Organic campaigns outperform paid campaigns on revenue.** The top three campaigns by revenue — Organic-Brand (0.25bn), Organic-YouTube-Reviews (0.24bn), and Organic-Blog-SEO (0.23bn) — are all organic, ahead of paid search campaigns such as Bing-Search-Ads and GoogleAds-Generic-Search (0.09bn each), suggesting organic content and brand search are currently the strongest drivers of acquisition revenue.
+
+---
+
+## 🛠️ Tech Stack
+
+| Tool     | Purpose                                  |
+| -------- | ----------------------------------------- |
+| MySQL    | Data querying and analysis                |
+| SQL      | Data validation and business analysis     |
+| Power BI | Interactive dashboard and reporting       |
+| DAX      | KPI calculations and analytical measures  |
+
+---
+
+## 📁 Project Structure
+
+```text
+shop-sphere-clv-analytics/
 │
 ├── SQL/
 │   ├── 01_Data_Validation.sql
@@ -29,5 +297,36 @@ Business Insights & Strategic Recommendations
 │   └── page_3_acquisition_customer_value.png
 │
 └── README.md
-▶️ How to Run1. Database Setup & SQL AnalysisClone this repository:Bashgit clone https://github.com/your-username/shop-sphere-clv-analytics.git
-Open your MySQL relational database management tool (e.g., MySQL Workbench).Execute the SQL scripts located in the SQL/ directory sequentially from 01_Data_Validation.sql through 07_Acquisition_Analysis.sql.2. Power BI Dashboard ViewingEnsure Power BI Desktop is installed on your system.Open the file PowerBI/Shop_Sphere_CLV_Analytics.pbix.If connecting to a local database instance, update the database source credentials under Transform Data > Data Source Settings and click Refresh.🖼️ Dashboard PreviewPagePreviewExecutive CLV OverviewRetention & Customer BehaviourAcquisition & Customer Value🤝 Connect With MeLinkedIn: Your LinkedIn ProfileEmail: your.email@example.comGitHub: Your GitHub Profile⭐ If you found this project useful, please give it a star — it helps others discover it!
+```
+
+---
+
+## ▶️ How to Run
+
+1. Clone this repository to your local machine.
+2. Open the SQL scripts in the `SQL/` folder — they are numbered in the order they should be run (01 through 07).
+3. Load the source tables (Customers, Orders, Order_Items, Products, Returns) into MySQL.
+4. Run the SQL scripts in order to reproduce the validation, customer, RFM, cohort, CLV, profitability, and acquisition analysis.
+5. Open `Shop_Sphere_CLV_Analytics.pbix` in Power BI Desktop.
+6. Update the data source connection to point to your local MySQL database, then refresh the report to load the latest data.
+
+---
+
+## 🖼️ Dashboard Preview
+
+| Page                           | Preview                                                                            |
+| ------------------------------- | ----------------------------------------------------------------------------------- |
+| Executive CLV Overview          | ![Executive Overview](Screenshots/page_1_executive_overview.png)                    |
+| Retention & Customer Behaviour  | ![Retention & Behaviour](Screenshots/page_2_retention_behaviour.png)                |
+| Acquisition & Customer Value    | ![Acquisition & Customer Value](Screenshots/page_3_acquisition_customer_value.png)  |
+
+---
+
+## 🤝 Connect With Me
+
+* **LinkedIn:** [Add your LinkedIn URL here]
+* **Email:** [Add your email here]
+
+---
+
+> ⭐ If you found this project useful, please give it a star — it helps others discover it!
