@@ -317,8 +317,8 @@ shop-sphere-clv-analytics/
 | Page                           | Preview                                                                            |
 | ------------------------------- | ----------------------------------------------------------------------------------- |
 | Executive CLV Overview          | ![Executive Overview](https://github.com/Ankar-G/Shop-Sphere-CLV-Cohort-Analytics/blob/main/ScreenShots/Screenshot%202026-09-05%20123609.png)                    |
-| Retention & Customer Behaviour  | ![Retention & Behaviour](Screenshots/page_2_retention_behaviour.png)                |
-| Acquisition & Customer Value    | ![Acquisition & Customer Value](Screenshots/page_3_acquisition_customer_value.png)  |
+| Retention & Customer Behaviour  | ![Retention & Behaviour](https://github.com/Ankar-G/Shop-Sphere-CLV-Cohort-Analytics/blob/main/ScreenShots/Screenshot%202026-09-05%20132303.png)                |
+| Acquisition & Customer Value    | ![Acquisition & Customer Value](https://github.com/Ankar-G/Shop-Sphere-CLV-Cohort-Analytics/blob/main/ScreenShots/Screenshot%202026-09-05%20123658.png)  |
 
 ---
 
